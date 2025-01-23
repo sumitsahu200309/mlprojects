@@ -1,5 +1,5 @@
 import sys
-import logging
+from src.logger import logging
 
 def error_message_detail(error,error_detail:sys):
     _,_,_exc_tb=error_detail.exc_info # retrives information about current exception ,this returns a tuple containing exception type,exception object and the traceback object.
@@ -10,7 +10,7 @@ def error_message_detail(error,error_detail:sys):
     return error_message
     
 
-class customexception(Exception):
+class customException(Exception):
     def __init__(self,error_message,error_detail:sys): # super() is a special function in python that refers to the parent class of the current class.
         super().__init__(error_message) # calls the constructor of the parent Exception class,passing the error_message as an argument # by calling super().__init__ ,you ensure that the parent class constructor is executed correctly before any additional initialization code in child class constructor
         self.error_message=error_message_detail(error_message,error_detail=error_detail)
@@ -18,9 +18,9 @@ class customexception(Exception):
         return self.error_message
 
 #if __name__=="__main__":
- #   try:
-  #      a=1/0
-   # except Exception as e:
-    #    logging.info("divide by 0")
-     #   raise customexception(e,sys)
+    #try:
+        #a=1/0
+    #except Exception as e:
+        #logging.info("divide by 0")
+        #raise customexception(e,sys)
         
